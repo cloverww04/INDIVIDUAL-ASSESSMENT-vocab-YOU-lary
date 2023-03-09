@@ -5,11 +5,11 @@ const formEvents = (user) => {
   document.querySelector('#main-container').addEventListener('submit', (e) => {
     e.preventDefault();
     // Click event for adding a card
-    if (e.target.id.includes('add-card-btn')) {
+    if (e.target.id.includes('submit-card')) {
       const payload = {
         title: document.querySelector('#title-input').value,
         definition: document.querySelector('#definition-input').value,
-        language: document.querySelector('#language').value,
+        language: document.querySelector('#language-select-input').value,
         uid: user.uid,
       };
       createCard(payload).then(({ name }) => {
@@ -26,7 +26,7 @@ const formEvents = (user) => {
       const payload = {
         title: document.querySelector('#title-input').value,
         definition: document.querySelector('#definition-input').value,
-        language: document.querySelector('#language').value,
+        language: document.querySelector('#language-select-input').value,
         firebaseKey,
       };
       updateCard(payload).then(() => {

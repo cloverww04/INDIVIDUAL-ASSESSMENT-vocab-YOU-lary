@@ -10,18 +10,17 @@ const addCardForm = (obj) => {
 <label for="language-select-input" class="form-label">Select language</label>
 <select id="language-select-input" class="form-select" aria-label="language select">
   <option selected>Select a language</option>
-  <option value="${obj.language || ''}">JavaScript</option>
-  <option value="${obj.language || ''}">HTML</option>
-  <option value="${obj.language || ''}">CSS</option>
+  <option value="JavaScript"}">JavaScript</option>
+  <option value="HTML"}">HTML</option>
+  <option value="CSS"}">CSS</option>
 </select>
 </div>
 <div class="mb-3">
  <label for="definition-input" class="form-label">Definition</label>
  <input type="textarea" class="form-control" id="definition-input" value="${obj.definition || ''}" required>
 </div>
-<button id="add-card-btn" type="button" class="btn btn-success">Submit</button>
+<button id="add-card-btn" type="submit" class="btn btn-success">Submit</button>
  </form>`;
   renderToDOM('#main-container', domString);
 };
-
 export default addCardForm;
