@@ -1,7 +1,8 @@
 import renderToDOM from '../../utils/renderToDOM';
 
-const addCardForm = (obj) => {
-  const domString = `<form id="${obj.firebaseKey ? `update-card--${obj.firebaseKey}` : 'submit-card'}" class="mb-4">
+const addCardForm = (obj = {}) => {
+  const domString = `
+  <form id="${obj.firebaseKey ? `edit-card--${obj.firebaseKey}` : 'submit-card'}" class="mb-4">
  <div class="mb-3">
  <label for="title-input" class="form-label">Title</label>
  <input type="text" class="form-control" id="title-input" placeholder="Title" value="${obj.title || ''}" required>

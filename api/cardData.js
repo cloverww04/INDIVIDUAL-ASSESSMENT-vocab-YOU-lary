@@ -10,13 +10,7 @@ const getCards = (uid) => new Promise((resolve, reject) => {
     },
   })
     .then((response) => response.json())
-    .then((data) => {
-      if (data) {
-        resolve(Object.values(data));
-      } else {
-        resolve([]);
-      }
-    })
+    .then((data) => resolve(Object.values(data)))
     .catch(reject);
 });
 
@@ -48,4 +42,36 @@ const updateCard = (payload) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export { getCards, createCard, updateCard };
+const deleteCard = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocab/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const getSingleCard = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/vocab/${firebaseKey}.json`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const filterByLanguage = async (uid, inputSelection) => {
+  const data = await getCards(uid);
+  const filtered = inputSelection === 'All' ? data : Object.values(data).filter((item) => item.language === inputSelection);
+  return filtered;
+};
+
+export {
+  getCards, createCard, updateCard, deleteCard, getSingleCard, filterByLanguage
+};

@@ -19,12 +19,9 @@ const navBar = () => {
                 All Cards <span class="sr-only">(current)</span>
               </a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#" id="filterByLanguage">Filter By Language</a>
-            </li>
             <li>
             <input
-              class="form-control mr-sm-2"
+              class="form-control-search mr-sm-2"
               id="search"
               placeholder="Search Vocab Titles"
               aria-label="Search"
