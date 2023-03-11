@@ -1,3 +1,4 @@
+import filterDropDown from '../components/filter';
 import renderToDOM from '../utils/renderToDOM';
 
 const emptyCards = () => {
@@ -6,7 +7,7 @@ const emptyCards = () => {
 };
 
 const showCards = (array) => {
-  let domString = '';
+  let domString = '<div id="filter-container"></div>';
   array.forEach((item) => {
     domString += `
         <div class="card">
@@ -14,11 +15,13 @@ const showCards = (array) => {
   <div class="card-body">
     <h5 class="card-title">${item.title}</h5>
     <p class="card-text">${item.definition}</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a id="edit-card-btn--${item.firebaseKey}" class="btn btn-primary">Edit</a>
+    <a id="delete-card-btn--${item.firebaseKey}" class="btn btn-danger">Delete</a>
   </div>
 </div>`;
   });
   renderToDOM('#main-container', domString);
+  filterDropDown();
 };
 
 export { showCards, emptyCards };
